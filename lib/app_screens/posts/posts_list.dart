@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:html/dom.dart' as dom;
 import 'package:http/http.dart' as http;
-import 'package:mwinda_app/app_screens/my_home_page.dart';
 import 'package:mwinda_app/app_screens/posts/post_detail.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -48,7 +45,7 @@ class _PostsListState extends State<PostsList> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ma liste de posts"),
+        title: Text("Information", style: TextStyle(color: Colors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
