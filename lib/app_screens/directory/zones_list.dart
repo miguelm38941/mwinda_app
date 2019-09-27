@@ -39,17 +39,18 @@ class _ZonesListState extends State<ZonesList> {
   }*/
 
   Future<List<Zone>> showZones() async {
-    var data = await http.get('https://jsonplaceholder.typicode.com/posts');
+    var data = await http.get('http://landela.org/mobileapi/zones/liste/' + this.province.id);
     var dataDecoded = json.decode(data.body);
 
     List<Zone> zones = List();
-    dataDecoded.forEach((zone){
-      String title = zone["title"];
+    dataDecoded["result"].forEach((zone){
+      String title = zone["zones"];
       if(title.length>25){
-        title = zone["title"].substring(1,25) + "...";
+        title = zone["zones"].substring(1,25) + "..." + this.province.id;
       }
-      String body = zone["body"].replaceAll(RegExp(r'\n'), " ");
-      zones.add(new Zone(title, body));
+      String id = zone["id"];
+      //String body = zone["body"].replaceAll(RegExp(r'\n'), " ");
+      zones.add(new Zone(id, title));
     });
     return zones;
   }

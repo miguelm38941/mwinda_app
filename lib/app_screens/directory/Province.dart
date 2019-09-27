@@ -1,4 +1,4 @@
 class Province {
-  String title, text;
-  Province(this.title, this.text);
+  String id, title;
+  Province(this.id, this.title);
 }

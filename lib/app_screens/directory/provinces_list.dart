@@ -30,7 +30,20 @@ class _ProvincesListState extends State<ProvincesList> {
     var dataDecoded = json.decode(data.body);
 
     List<Province> provinces = List();
-    dataDecoded.forEach((province){
+    provinces.add(new Province("1", "Kinshasa"));
+    provinces.add(new Province("2", "Haut Katanga"));
+    provinces.add(new Province("3", "Maniema"));
+    provinces.add(new Province("4", "Nord Kivu"));
+    provinces.add(new Province("5", "Sud Kivu"));
+    provinces.add(new Province("6", "Kasai"));
+    provinces.add(new Province("7", "Equateur"));
+    provinces.add(new Province("8", "Kwilu"));
+    provinces.add(new Province("9", "Nord Ubangi"));
+    provinces.add(new Province("10", "Congo Central"));
+    provinces.add(new Province("11", "Tshopo"));
+    provinces.add(new Province("12", "Kasai Central"));
+
+    /*dataDecoded.forEach((province){
       String title = province["title"];
       if(title.length>25){
         title = province["title"].substring(1,25) + "...";
@@ -38,12 +51,14 @@ class _ProvincesListState extends State<ProvincesList> {
       String body = province["body"].replaceAll(RegExp(r'\n'), " ");
       provinces.add(new Province(title, body));
       //debugPrint("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ" + province["title"]);
-    });
+    });*/
     return provinces;
+
   }
 
   @override
   Widget build(BuildContext context) {
+
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -89,7 +104,7 @@ class _ProvincesListState extends State<ProvincesList> {
                     child: CircularProgressIndicator(),
                   );
                 };
-              })
+              }),
       ),
     );
   }

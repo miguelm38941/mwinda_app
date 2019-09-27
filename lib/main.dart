@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'app_screens/app_index.dart';
-import 'app_screens/my_home_page.dart';
-import 'app_screens/my_home_screen.dart';
-import 'app_screens/posts/posts_list.dart';
 
 void main() => runApp(MyApp());
 

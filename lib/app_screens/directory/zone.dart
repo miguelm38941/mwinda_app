@@ -1,4 +1,4 @@
 class Zone {
-  String title, text;
-  Zone(this.title, this.text);
+  String id, title;
+  Zone(this.id, this.title);
 }
