@@ -21,12 +21,20 @@ class PostDetail extends StatelessWidget {
               floating: false,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
-                  centerTitle: true,
-                  title: Text(post.title,
+                  centerTitle: false,
+                  title: Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.only(left: 0.0, right: 28.0),
+                    child: Text(
+                      post.title,
+                      textAlign: TextAlign.left,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                      )),
+                        color: Colors.black,
+                        fontSize: 14.0,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                   background: Image.network(
                     post.image,
                     fit: BoxFit.cover,
@@ -34,15 +42,35 @@ class PostDetail extends StatelessWidget {
             ),
           ];
         },
-        body: Container(
-          child: Padding(
-            padding: EdgeInsets.only(top: 60.0, bottom: 16.0, left: 16.0, right: 16.0),
-            child: Html(
-              data: post.text.toString(),
+        body: ListView (
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              color: Colors.lightBlue[600],
+              child: Padding(
+                padding: EdgeInsets.only(top: 16.0, bottom: 16.0, left: 16.0, right: 16.0),
+                child: Text(post.title, style: TextStyle(fontSize: 20.0, color: Colors.white)),
+              ),
             ),
-          ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              alignment: Alignment(0.0, 200.0),
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text("Actualités", style: TextStyle(fontSize: 18.0, fontStyle: FontStyle.italic, color: Colors.lightBlue[600])),
+    ),
+            ),
+            Container(
+              child: Padding(
+                padding: EdgeInsets.only(top: 30.0, bottom: 16.0, left: 16.0, right: 16.0),
+                child: Html(
+                  data: post.text.toString(),
+                ),
+              ),
+            ),
+          ],
         ),
-      ),
+      )
     );
 
 /*
