@@ -34,6 +34,14 @@ class PostDetail extends StatelessWidget {
             ),
           ];
         },
+        body: Container(
+          child: Padding(
+            padding: EdgeInsets.only(top: 60.0, bottom: 16.0, left: 16.0, right: 16.0),
+            child: Html(
+              data: post.text.toString(),
+            ),
+          ),
+        ),
       ),
     );
 
