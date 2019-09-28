@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:mwinda_app/app_screens/my_home_page.dart';
 import 'dart:async';
+import 'package:mwinda_app/app_screens/directory/zonesante.dart';
 import 'dart:convert';
 import 'centre_detail.dart';
-import 'zone.dart';
 import 'centre.dart';
 
 class CentresList extends StatefulWidget {
   // Declare a field that holds the Zone.
-  final Zone zone;
+  final ZoneSante zone;
 
   // In the constructor, require a Zone.
   CentresList({Key key, @required this.zone}) : super(key: key);
@@ -27,7 +26,7 @@ class CentresList extends StatefulWidget {
 
 class _CentresListState extends State<CentresList> {
 
-  Zone zone;
+  ZoneSante zone;
   // Constructor
   _CentresListState(zone){
     this.zone = zone;
@@ -81,6 +80,7 @@ class _CentresListState extends State<CentresList> {
                                     trailing: Icon(Icons.keyboard_arrow_right),
                                     title: Text(snapshot.data[index].title, style: TextStyle(fontSize: 15.0)),
                                     onTap: (){
+
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -106,4 +106,32 @@ class _CentresListState extends State<CentresList> {
     );
   }
 
+
+}
+
+
+class SnackBarPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        onPressed: () {
+          final snackBar = SnackBar(
+            content: Text('Yay! A SnackBar!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+
+          // Find the Scaffold in the widget tree and use
+          // it to show a SnackBar.
+          Scaffold.of(context).showSnackBar(snackBar);
+        },
+        child: Text('Show SnackBar'),
+      ),
+    );
+  }
 }

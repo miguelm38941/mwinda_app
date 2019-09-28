@@ -11,14 +11,27 @@ class AppIndex extends StatelessWidget {
       child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                buidPostsGestureDetector(context),
-                buidDirectoryGestureDetector(context)
+            child: ListView(
+              padding: const EdgeInsets.only(top: 80.0),
+              children: <Widget>[
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buidPostsGestureDetector(context),
+                    buidDirectoryGestureDetector(context),
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    buidQuizzGestureDetector(context),
+                    buidDirectoryGestureDetector(context)
+                  ],
+                ),
               ],
-            ),
+            )
           ),
       ),
     );
@@ -45,6 +58,21 @@ class AppIndex extends StatelessWidget {
   }
 
   GestureDetector buidDirectoryGestureDetector (BuildContext context) {
+    return GestureDetector (
+      // When the child is tapped, show a snackbar.
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProvincesList(),
+          ),
+        );
+      },
+      child: buidContainerDirectoryLink(context),
+    );
+  }
+
+  GestureDetector buidQuizzGestureDetector (BuildContext context) {
     return GestureDetector (
       // When the child is tapped, show a snackbar.
       onTap: () {

@@ -27,6 +27,7 @@ dependencies:
   flutter_html: ^0.8.2
   fluttertoast: ^3.1.0
   flutter_map: 0.7.2
+  url_launcher: ^4.0.3
 
 dev_dependencies:
   flutter_test:

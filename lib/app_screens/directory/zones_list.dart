@@ -6,7 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'Province.dart';
 import 'centre_list.dart';
-import 'zone.dart';
+import 'zonesante.dart';
 
 class ZonesList extends StatefulWidget {
   // Declare a field that holds the Zone.
@@ -38,19 +38,16 @@ class _ZonesListState extends State<ZonesList> {
     return items;
   }*/
 
-  Future<List<Zone>> showZones() async {
+  Future<List<ZoneSante>> showZones() async {
     var data = await http.get('http://landela.org/mobileapi/zones/liste/' + this.province.id);
     var dataDecoded = json.decode(data.body);
 
-    List<Zone> zones = List();
+    List<ZoneSante> zones = List();
     dataDecoded["result"].forEach((zone){
       String title = zone["zones"];
-      if(title.length>25){
-        title = zone["zones"].substring(1,25) + "..." + this.province.id;
-      }
-      String id = zone["id"];
+      String id = zone['id'];
       //String body = zone["body"].replaceAll(RegExp(r'\n'), " ");
-      zones.add(new Zone(id, title));
+      zones.add(new ZoneSante(id, title));
     });
     return zones;
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:mwinda_app/app_screens/posts/post.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class PostDetail extends StatelessWidget {
@@ -65,6 +66,10 @@ class PostDetail extends StatelessWidget {
                 padding: EdgeInsets.only(top: 30.0, bottom: 16.0, left: 16.0, right: 16.0),
                 child: Html(
                   data: post.text.toString(),
+                  padding: EdgeInsets.all(8.0),
+                  onLinkTap: (url) {
+                    _launchURL();
+                  },
                 ),
               ),
             ),
@@ -72,6 +77,7 @@ class PostDetail extends StatelessWidget {
         ),
       )
     );
+
 
 /*
   @override
@@ -114,5 +120,14 @@ class PostDetail extends StatelessWidget {
 
     ),
     );*/
+  }
+
+  _launchURL() async {
+    const url = 'https://flutter.dev';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
