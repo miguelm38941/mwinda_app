@@ -1,4 +1,4 @@
 class Centre {
-  String id, title, text;
-  Centre(this.id, this.title, this.text);
+  String id, title, type, appartenance, adresse, phone, long, lat;
+  Centre(this.id, this.title, this.type, this.appartenance, this.adresse, this.phone, this.long, this.lat);
 }

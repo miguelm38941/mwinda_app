@@ -75,14 +75,14 @@ class _ProvincesListState extends State<ProvincesList> {
                       itemBuilder: (context, index) {
                         return Card(
                             child: Padding(
-                              padding: const EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.all(0.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: <Widget>[
                                     ListTile(
                                       //selected: true,
                                       trailing: Icon(Icons.keyboard_arrow_right),
-                                      title: Text(snapshot.data[index].title, style: TextStyle(fontSize: 22.0)),
+                                      title: Text(snapshot.data[index].title, style: TextStyle(fontSize: 15.0)),
                                       onTap: (){
                                         Navigator.push(
                                           context,

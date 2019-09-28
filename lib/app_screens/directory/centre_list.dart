@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:mwinda_app/app_screens/my_home_page.dart';
@@ -32,25 +33,23 @@ class _CentresListState extends State<CentresList> {
     this.zone = zone;
   }
 
-  // Prepare Data Source
-  /*List<String> showProvinces() {
-    var items = List<String>.generate(1000, (counter) => "Item $counter");
-    return items;
-  }*/
-
   Future<List<Centre>> showCentres() async {
-    var data = await http.get('https://jsonplaceholder.typicode.com/posts');
+    var data = await http.get('https://landela.org/mobileapi/centre_depistage/liste/' + this.zone.id);
     var dataDecoded = json.decode(data.body);
 
     List<Centre> centres = List();
-    dataDecoded.forEach((centre){
-      String id = "1";//centre["id"];
-      String title = centre["title"];
-      if(title.length>25){
-        title = centre["title"].substring(1,25) + "...";
-      }
-      String body = centre["body"].replaceAll(RegExp(r'\n'), " ");
-      centres.add(new Centre(id, title, body));
+    dataDecoded["result"].forEach((centre){
+      String id = centre["id"];
+      String title = centre["centre"];
+
+      //String body = centre["body"].replaceAll(RegExp(r'\n'), " ");
+      String type = centre["type"];
+      String appartenance = centre["appartenance"];
+      String adresse = centre["adresse"];
+      String phone = centre["phone"];
+      String long = centre["longitude"];
+      String lat = centre["latitude"];
+      centres.add(new Centre(id, title, type, appartenance, adresse, phone, long, lat));
     });
     return centres;
   }
@@ -73,14 +72,14 @@ class _CentresListState extends State<CentresList> {
                       itemBuilder: (context, index) {
                         return Card(
                             child: Padding(
-                              padding: const EdgeInsets.all(2.0),
+                              padding: const EdgeInsets.all(0.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: <Widget>[
                                   ListTile(
                                     //selected: true,
                                     trailing: Icon(Icons.keyboard_arrow_right),
-                                    title: Text(snapshot.data[index].title, style: TextStyle(fontSize: 22.0)),
+                                    title: Text(snapshot.data[index].title, style: TextStyle(fontSize: 15.0)),
                                     onTap: (){
                                       Navigator.push(
                                         context,

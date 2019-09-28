@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../my_home_page.dart';
 import '../my_home_screen.dart';
 import 'centre.dart';
+import 'map_screen.dart';
 
 
 class CentreDetail extends StatelessWidget {
@@ -27,7 +28,7 @@ class CentreDetail extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(bottom:0.0),
                 child: Text(
-                  "Hopital de Kalembelembe",
+                  this.centre.title,
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize:30.0, fontWeight: FontWeight.bold),
                 ),
@@ -39,15 +40,16 @@ class CentreDetail extends StatelessWidget {
               margin: EdgeInsets.only(bottom:40.0),
               color: Colors.deepOrange,
             ),
-            _buildFieldRow(context, "Nom", "Hopital de Bomoi"),
-            _buildFieldRow(context, "Type", "Hopital"),
+            _buildFieldRow(context, "Type:", this.centre.type),
+            _buildFieldRow(context, "Appartenance:", this.centre.appartenance),
+            _buildFieldRow(context, "Type:", this.centre.adresse),
             RaisedButton(
               child: Text("Afficher sur une carte"),
               onPressed: (){
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyHomeScreen(),
+                    builder: (context) => MapScreen(centre: this.centre),
                   ),
                 );
               },
